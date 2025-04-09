@@ -3529,7 +3529,7 @@ MonoBehaviour:
   signupButton_onLogin: {fileID: 792003030}
   signupButton_onSignup: {fileID: 1750898540}
   OkButton: {fileID: 438818747}
-  startButton: {fileID: 0}
+  startButton: {fileID: 176563025}
   addDiamondButton: {fileID: 1214242065}
   msgText: {fileID: 57859447}
   diamondText: {fileID: 1617334196}
