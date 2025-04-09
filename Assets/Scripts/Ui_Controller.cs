@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 
 public class Ui_Controller : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class Ui_Controller : MonoBehaviour
 
     public TMP_InputField usernameInput, passwordInput, signupUsernameInput, signupPasswordInput, confirmPasswordInput;
 
-    public Button loginButton, signupButton_onLogin, signupButton_onSignup, OkButton;
+    public Button loginButton, signupButton_onLogin, signupButton_onSignup, OkButton, startButton, addDiamondButton;
 
     public TMP_Text msgText, diamondText;
 
     public Slider HeartSlider;
+
+    private int user_id;
 
     void Start()
     {
@@ -42,12 +45,13 @@ public class Ui_Controller : MonoBehaviour
 
         loginButton.onClick.AddListener(() =>
         {
-            StartCoroutine(Main.Instance.webReq.Login(usernameInput.text, passwordInput.text, (message, diamond, heart) =>
+            StartCoroutine(Main.Instance.webReq.Login(usernameInput.text, passwordInput.text, (message, diamond, heart, user_id) =>
             {
                 msgText.text = message;
 
                 if (message == "Login successful")
                 {
+                    this.user_id = user_id;
                     OpenLobbyPanel(diamond, heart);
                 }
                 else
@@ -72,6 +76,16 @@ public class Ui_Controller : MonoBehaviour
                 msgText.text = "Passwords do not match.";
                 OpenMsgPanel();
             }
+        });
+
+        addDiamondButton.onClick.AddListener(() =>
+        {
+            // Call AddDiamond method when the Add Diamond button is clicked
+            StartCoroutine(Main.Instance.webReq.AddDiamond(this.user_id, (message, newDiamondCount) =>
+            {
+                Debug.Log("Logged in with user ID: " + this.user_id);
+                diamondText.text = $"{newDiamondCount}";
+            }));
         });
     }
 
