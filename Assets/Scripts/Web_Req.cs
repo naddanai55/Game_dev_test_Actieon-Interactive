@@ -24,7 +24,7 @@ public class Web_Req : MonoBehaviour
         form.AddField("username", username);
         form.AddField("password", password);
 
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/signup_test/login.php", form);
+        using UnityWebRequest www = UnityWebRequest.Post("https://test-piggy.codedefeat.com/worktest/dev01/login.php", form);
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
@@ -62,7 +62,7 @@ public class Web_Req : MonoBehaviour
         form.AddField("username", username);
         form.AddField("password", password);
 
-        using UnityWebRequest www = UnityWebRequest.Post("http://localhost/signup_test/signup.php", form);
+        using UnityWebRequest www = UnityWebRequest.Post("https://test-piggy.codedefeat.com/worktest/dev01/signup.php", form);
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
