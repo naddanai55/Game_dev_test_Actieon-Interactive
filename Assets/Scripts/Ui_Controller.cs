@@ -31,6 +31,12 @@ public class Ui_Controller : MonoBehaviour
             OpenLoginPanel();
         });
 
+        startButton.onClick.AddListener(() =>
+        {
+            msgText.text = "Welcome to the game! go to the login page.";
+            OpenMsgPanel();
+        });
+
         OkButton.onClick.AddListener(() =>
         {
             if (msgText.text == "Passwords do not match.")

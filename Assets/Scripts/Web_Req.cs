@@ -66,7 +66,6 @@ public class Web_Req : MonoBehaviour
             }
         }
     }
-
     
     public IEnumerator Signup(string username, string password, System.Action<string> onMessage)
     {
